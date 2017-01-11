@@ -66,8 +66,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_report: 'SENSOR_MULTILEVEL_REPORT',
 			command_report_parser: report => {
 				if (report['Sensor Value (Parsed)'] === -999.9) return null;
-				//this device has an internal sensor and no parameters to adjust.
-				return report['Sensor Value (Parsed)'] - 8;
+				return report['Sensor Value (Parsed)'];
 			}
 		}
     }
