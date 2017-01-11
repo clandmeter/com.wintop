@@ -14,8 +14,8 @@
         "lights"
     ],
     "images": {
-        "large": "/assets/images/large.png",
-        "small": "/assets/images/small.png"
+        "large": "/assets/images/large.jpg",
+        "small": "/assets/images/small.jpg"
     },
     "author": {
         "name": "Carlo Landmeter",
@@ -64,8 +64,8 @@
                 ]
             },
             "images": {
-                "large": "/drivers/iPlugEnergy/assets/images/large.png",
-                "small": "/drivers/iPlugEnergy/assets/images/small.png"
+                "large": "/drivers/iPlugEnergy/assets/images/large.jpg",
+                "small": "/drivers/iPlugEnergy/assets/images/small.jpg"
             }
         }
     ]
