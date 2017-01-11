@@ -1,0 +1,72 @@
+{
+    "id": "com.wintop",
+    "name": {
+        "en": "Wintop"
+    },
+    "version": "0.0.1",
+    "compatibility": ">=0.10.9",
+    "description": {
+        "en": "Wintop devices for Homey",
+        "nl": "Wintop apparaten voor Homey"
+    },
+    "category": [
+        "appliances",
+        "lights"
+    ],
+    "images": {
+        "large": "/assets/images/large.png",
+        "small": "/assets/images/small.png"
+    },
+    "author": {
+        "name": "Carlo Landmeter",
+        "email": "clandmeter@gmail.com"
+    },
+    "drivers": [
+        {
+            "id": "iPlugEnergy",
+            "name": {
+                "en": "iPlugEnergy Wall PLug"
+            },
+            "zwave": {
+                "manufacturerId": 151,
+                "productTypeId": 26947,
+                "productId": 17665,
+                "learnmode": {
+                    "image": "/drivers/iPlugEnergy/assets/learnmode.svg",
+                    "instruction": {
+                        "en": "Press service button on the front of the device for 2 seconds and the led should start to blink rapidly"
+                    }
+                }
+            },
+    	    "class": "socket",
+    	    "capabilities": [
+                "onoff",
+                "measure_power",
+                "meter_power",
+                "measure_temperature"
+    	    ],
+            "mobile": {
+                "components": [
+                    {
+                        "id": "toggle",
+                        "capabilities": [
+                            "onoff"
+                        ]
+                    },
+                    {
+                        "id": "sensor",
+                        "capabilities": [
+                            "measure_power",
+                            "meter_power",
+                            "measure_temperature"
+                        ]
+                    }
+                ]
+            },
+            "images": {
+                "large": "/drivers/iPlugEnergy/assets/images/large.png",
+                "small": "/drivers/iPlugEnergy/assets/images/small.png"
+            }
+        }
+    ]
+}
