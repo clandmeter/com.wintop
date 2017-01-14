@@ -1,9 +1,10 @@
 'use strict';
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
+let temperature_offset = 0;
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
-    capabilities: {
+	capabilities: {
 		onoff: {
 			'command_class': 'COMMAND_CLASS_SWITCH_BINARY',
 			'command_get': 'SWITCH_BINARY_GET',
@@ -65,8 +66,24 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_report: 'SENSOR_MULTILEVEL_REPORT',
 			command_report_parser: report => {
 				if (report['Sensor Value (Parsed)'] === -999.9) return null;
-				return report['Sensor Value (Parsed)'];
+				return report['Sensor Value (Parsed)'] + temperature_offset;
 			}
 		}
-    }
+    },
+	settings: {
+		temperature_offset: newValue => {
+			temperature_offset = newValue;
+		}
+	}
+});
+
+module.exports.on('initNode', token => {
+	const node = module.exports.nodes[token];
+	if (node) {
+		module.exports.getSettings( node.device_data, (err, settings) => {
+			if (settings && settings.hasOwnProperty('temperature_offset')) {
+				temperature_offset = settings.temperature_offset;
+			}
+		});
+	}
 });
