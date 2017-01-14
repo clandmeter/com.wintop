@@ -66,7 +66,25 @@
             "images": {
                 "large": "/drivers/iPlugEnergy/assets/images/large.jpg",
                 "small": "/drivers/iPlugEnergy/assets/images/small.jpg"
-            }
+            },
+            "settings": [
+                {
+                    "id": "temperature_offset",
+                    "type": "number",
+                    "label": {
+                        "en": "Temperature offset"
+                    },
+                    "hint": {
+                        "en": "The amount of Celcius that needs to be offset to get the real temperature (will update on next zwave report)."
+                    },
+                    "attr": {
+                        "min": -25,
+                        "max": 25,
+                        "step": 0.1
+                    },
+                    "value": 0
+                }
+            ]
         }
     ]
 }
