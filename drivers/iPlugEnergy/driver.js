@@ -70,8 +70,15 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		}
 	},
 	settings: {
-		temperature_offset: newValue => {
+		temperature_offset: (newValue, oldValue, deviceData) => {
 			temperature_offset = newValue;
+			if (newValue !== oldValue) {
+				//get the current temperature so the offset is shown directly.
+				Homey.wireless('zwave').getNode( deviceData, function( err, node ) {
+					if (err) return console.error(err);
+					node.CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL.SENSOR_MULTILEVEL_GET();
+				});
+			}
 		}
 	}
 });
