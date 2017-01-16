@@ -26,7 +26,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			'command_get_parser': () => {
 				return {
 					'Properties1': {
-						'Scale': 5
+						'Scale': 2
 					}
 				};
 			},
